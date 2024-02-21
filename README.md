@@ -1,2 +1,2 @@
 # miniGames
- creating an arcade of games for practice
+ Creating an arcade of games for practice which can be swapped between in the gameHub.
