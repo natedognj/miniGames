@@ -40,7 +40,7 @@ public class GameHubMenu extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		String[] games = {"None", "Snake", "Tetris"};
+		String[] games = {"None", "Snake", "Tetris", "Dice Roller"};
 		@SuppressWarnings("rawtypes")
 		JComboBox gameList = new JComboBox(games);
 		gameList.setSelectedIndex(0);
@@ -63,6 +63,11 @@ public class GameHubMenu extends JFrame implements ActionListener {
 			case "Tetris":
 				setVisible(false);
 				GameHub.showTetrisMenu();
+				break;
+			case "Dice Roller":
+				setVisible(false);
+				GameHub.showDiceRoller();
+				break;
 		}
 	}
 }

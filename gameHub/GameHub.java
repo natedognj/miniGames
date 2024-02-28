@@ -12,6 +12,10 @@ public class GameHub {
 	public static void showTetrisMenu() {
 		tetris.Tetris.main(null);
 	}
+	
+	public static void showDiceRoller() {
+		diceRoller.DiceRoller.main(null);
+	}
 
 	public static void main(String[] args) {
 		java.awt.EventQueue.invokeLater(new Runnable() {
