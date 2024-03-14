@@ -11,6 +11,7 @@ public class Snake {
 	
 	
 	public static void start() {
+		gameForm = new GameForm();
 		leaderboardForm.setVisible(false);
 		gameForm.setVisible(true);
 		gamePanel.startGame();
@@ -37,7 +38,7 @@ public class Snake {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				mainMenu = new MainMenu();
-				gameForm = new GameForm();
+				
 				gamePanel = new GamePanel();
 				controlsForm = new ControlsForm();
 				leaderboardForm = new LeaderboardForm();

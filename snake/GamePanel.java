@@ -106,8 +106,6 @@ public class GamePanel extends JPanel implements ActionListener{
 			}
 		}
 		}
-		
-		
 	}
 	public void checkEat() {
 		//checks for head collision with food

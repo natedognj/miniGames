@@ -1,4 +1,4 @@
-package snake;
+package flappyBird;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -14,8 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
+import javax.swing.RowSorter.SortKey;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -25,9 +25,9 @@ public class LeaderboardForm extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private DefaultTableModel tm;
-	private String leaderboardFile = "snakeLeaderboard";
 	private JTable leaderboard;
+	private DefaultTableModel tm;
+	private String leaderboardFile = "flappyBirdLeaderboard";
 	private TableRowSorter<TableModel> sorter;
 
 	public static void main(String[] args) {
@@ -36,6 +36,7 @@ public class LeaderboardForm extends JFrame {
 				try {
 					LeaderboardForm frame = new LeaderboardForm();
 					frame.setVisible(true);
+					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,7 +59,6 @@ public class LeaderboardForm extends JFrame {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initTableData() {
-		
 		Vector columnId = new Vector();
 		columnId.add("Player");
 		columnId.add("Score");
@@ -105,46 +105,46 @@ public class LeaderboardForm extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JButton btnMenu = new JButton("Main Menu");
+		btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				FlappyBird.showMenu();
+			}
+		});
+		btnMenu.setBounds(10, 11, 100, 23);
+		contentPane.add(btnMenu);
+		
 		leaderboard = new JTable();
 		leaderboard.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"Player Name", "Score"
-				}
-			) {
-				@SuppressWarnings("rawtypes")
-				Class[] columnTypes = new Class[] {
-					Object.class, Integer.class
-				};
-				@SuppressWarnings({ "unchecked", "rawtypes" })
-				public Class getColumnClass(int columnIndex) {
-					return columnTypes[columnIndex];
-				}
-				boolean[] columnEditables = new boolean[] {
-					true, false
-				};
-				public boolean isCellEditable(int row, int column) {
-					return columnEditables[column];
-				}
-			});
-			leaderboard.getColumnModel().getColumn(0).setPreferredWidth(299);
-			leaderboard.getColumnModel().getColumn(1).setPreferredWidth(322);
-		leaderboard.setBounds(10, 42, 414, 208);
+			new Object[][] {
+			},
+			new String[] {
+				"Player Name", "Score"
+			}
+		) {
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				Object.class, Integer.class
+			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				true, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		leaderboard.getColumnModel().getColumn(0).setPreferredWidth(299);
+		leaderboard.getColumnModel().getColumn(1).setPreferredWidth(322);
+		leaderboard.setBounds(10, 45, 402, 205);
 		
 		initTableData();
 		initTableSorter();
 		contentPane.add(leaderboard);
-		
-		JButton btnMainMenu = new JButton("Game Menu");
-		btnMainMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				Snake.showMainMenu();
-			}
-		});
-		btnMainMenu.setBounds(10, 11, 115, 23);
-		contentPane.add(btnMainMenu);
 	}
 
 }
